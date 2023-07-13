@@ -53,12 +53,16 @@ export const doorLockSlice = createSlice({
 
         enter: (state) => {
             state.type = "text";
-            if (state.value === password) {
-                state.className = "green";
-                state.value = "Access Granted";
+            if (parseFloat(state.value)) {
+                if (state.value === password) {
+                    state.className = "green";
+                    state.value = "Access Granted";
+                } else {
+                    state.className = "red";
+                    state.value = "Access Denied";
+                }
             } else {
-                state.className = "red";
-                state.value = "Access Denied";
+                return;
             }
         }
     }
