@@ -16,10 +16,16 @@ export const doorLockSlice = createSlice({
     reducers: {
         onValueChange: (state, action) => {
             state.value = action.payload;
+        },
+
+        btnClick: (state, action) => {
+            if (state.value.length < 4) {
+                state.value += action.payload;
+            }
             console.log(state.value);
         },
     }
 });
 
 export const doorLockReducer = doorLockSlice.reducer;
-export const {onValueChange,} = doorLockSlice.actions;
+export const {onValueChange, btnClick,} = doorLockSlice.actions;
