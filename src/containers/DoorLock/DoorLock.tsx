@@ -10,25 +10,28 @@ const DoorLock = () => {
     const dispatch = useDispatch();
 
     return (
-        <form onSubmit={(event) => {
+        <form className="mt-5 ms-5 form shadow-lg mb-5 bg-body-tertiary rounded" onSubmit={(event) => {
             event.preventDefault();
             dispatch(enter());
         }}>
             <input type={initState.type}
                    style={{background: initState.className}}
                    maxLength={4}
+                   className="form-control w-50 input"
                    onChange={(event) => dispatch(onValueChange(event.target.value))}
                    value={initState.value}
                    required
             />
-            {
-                BUTTONS.map((every, index) => (
-                    <button key={index} className="button" onClick={() => dispatch(btnClick(every))} type="button">{every}</button>
-                ))
-            }
-            <button className="button" type="button" onClick={() => dispatch(backSpace())}>*</button>
-            <button className="button" type="button" onClick={() => dispatch(btnClick("0"))}>0</button>
-            <button className="button" type="submit">E</button>
+            <div className="d-block btnes">
+                {
+                    BUTTONS.map((every, index) => (
+                        <button key={index} className="btn btn-primary m-1" onClick={() => dispatch(btnClick(every))} type="button">{every}</button>
+                    ))
+                }
+                <button className="btn btn-danger m-1" type="button" onClick={() => dispatch(backSpace())}> - </button>
+                <button className="btn btn-primary m-1" type="button" onClick={() => dispatch(btnClick("0"))}>0</button>
+                <button className="btn btn-success m-1" type="submit">E</button>
+            </div>
         </form>
     );
 };

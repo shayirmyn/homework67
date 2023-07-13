@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.css';
 import DoorLock from "./containers/DoorLock/DoorLock";
+import './App.css';
 
 const App = () => (
     <>
